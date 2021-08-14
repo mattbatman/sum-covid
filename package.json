@@ -1,11 +1,10 @@
 {
-  "name": "covid-perspective",
+  "name": "sum-covid",
   "version": "1.0.0",
   "description": "D3 graphs with CDC data",
-  "main": "index.js",
   "scripts": {
-    "start": "parcel serve ./src/index.html",
-    "build": "parcel build ./src/index.html",
+    "start": "parcel serve ./src/index.html --dist-dir ./public",
+    "build": "parcel build ./src/index.html --dist-dir ./public",
     "pretty": "prettier --config \"./.prettierrc.json\" --write \"./src/**/*.{ts,tsx,js,jsx}\""
   },
   "author": "Matt Batman",
@@ -18,6 +17,7 @@
   "dependencies": {
     "d3-format": "^3.0.1",
     "d3-selection": "^3.0.0",
+    "modern-normalize": "^1.1.0",
     "ramda": "^0.27.1"
   }
 }

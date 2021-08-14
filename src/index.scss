@@ -1,13 +1,11 @@
+@import '../node_modules/modern-normalize/modern-normalize.css';
+
 $white: #ffffff;
 $black: #000000;
 $red: #e74e38;
 $white-red: #f8eedc;
 $blue: #4f7da3;
 $grey-blue: #d8dbdd;
-
-* {
-  box-sizing: border-box;
-}
 
 .container {
   width: 95%;
