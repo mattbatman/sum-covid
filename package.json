@@ -1,0 +1,23 @@
+{
+  "name": "covid-perspective",
+  "version": "1.0.0",
+  "description": "D3 graphs with CDC data",
+  "main": "index.js",
+  "scripts": {
+    "start": "parcel serve ./src/index.html",
+    "build": "parcel build ./src/index.html",
+    "pretty": "prettier --config \"./.prettierrc.json\" --write \"./src/**/*.{ts,tsx,js,jsx}\""
+  },
+  "author": "Matt Batman",
+  "license": "MIT",
+  "devDependencies": {
+    "@parcel/transformer-sass": "^2.0.0-rc.0",
+    "parcel": "^2.0.0-rc.0",
+    "prettier": "2.3.2"
+  },
+  "dependencies": {
+    "d3-format": "^3.0.1",
+    "d3-selection": "^3.0.0",
+    "ramda": "^0.27.1"
+  }
+}
