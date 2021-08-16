@@ -4,7 +4,7 @@ import deathsByMedcondData from './data/deaths-by-medcond.json';
 
 function createDeathsByMedcondChart() {
   const getOrder = (k) => {
-    orderMap = {
+    const orderMap = {
       No: 1,
       Yes: 2,
       Unknown: 4,
