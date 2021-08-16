@@ -6,6 +6,12 @@ $red: #e74e38;
 $white-red: #f8eedc;
 $blue: #4f7da3;
 $grey-blue: #d8dbdd;
+$light-green: #a9c774;
+$dark-green: #1b5037;
+
+:root {
+  font-family: 'Inter', sans-serif;
+}
 
 .container {
   width: 95%;
@@ -32,7 +38,7 @@ html {
 }
 
 body {
-  font-family: 'Inter', sans-serif;
+  font-family: var(--font-family);
 }
 
 h1,
@@ -88,6 +94,90 @@ section {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+/**
+ * Charts
+ **/
+
+#deaths-medcond-chart {
+  height: 400px;
+  width: 100%;
+}
+
+/**
+ * Generic D3 Styles
+ **/
+
+.d3-tooltip.hidden {
+  display: none;
+}
+
+.d3-tooltip {
+  border: 3px solid $black;
+  font-family: var(--font-family);
+  font-size: 14px;
+  display: table;
+  position: absolute;
+  line-height: 1.1;
+  text-align: left;
+  pointer-events: none;
+  white-space: nowrap;
+  background: $white;
+  width: auto;
+}
+
+.d3-tooltip td {
+  padding: 0.5rem;
+}
+
+.chart-container {
+  width: 100%;
+}
+
+.label,
+.axis,
+.subtitle {
+  font-size: 9px;
+}
+
+.label,
+.subtitle,
+.axis {
+  font-family: var(--font-family);
+}
+
+.title {
+  font-size: 10px;
+}
+
+.notes {
+  font-size: 13px;
+}
+
+/* ---- Media Queries ---- */
+
+@media (min-width: 335px) {
+  .label,
+  .axis,
+  .subtitle {
+    font-size: 10px;
+  }
+
+  .title {
+    font-size: 1em;
+  }
+}
+
+@media (min-width: 768px) {
+  .label,
+  .axis,
+  .subtitle {
+    font-size: 13px;
+  }
+  .title {
+    font-size: 1.61111111em;
+  }
 }
 
 /**

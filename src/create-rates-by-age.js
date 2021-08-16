@@ -39,7 +39,7 @@ function createRatesByAgeTable(combinedCountData) {
     }
 
     if (columnHeader === 'Cases' || columnHeader === 'Deaths') {
-      return parseInt(data).toLocaleString('en');
+      return parseInt(data).toLocaleString();
     }
 
     return data;
