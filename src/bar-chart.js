@@ -160,7 +160,9 @@ const BarChart = () => {
   }
 
   function updateTooltip(event, d) {
-    d3.select(`${selector} .d3-tooltip .stat`).text(`${xk}: ${d[yk].toLocaleString()}`);
+    d3.select(`${selector} .d3-tooltip .stat`).text(
+      `${xk}: ${d[yk].toLocaleString()}`
+    );
     d3.select(`${selector} .d3-tooltip`)
       .classed('hidden', false)
       .style('left', () => {

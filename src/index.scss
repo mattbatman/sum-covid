@@ -101,14 +101,22 @@ section {
  * Charts
  **/
 
+#deaths-medcond-chart,
+#deaths-medcond-share-chart {
+  width: 100%;
+}
+
 #deaths-medcond-chart {
   height: 400px;
-  width: 100%;
 }
 
 /**
  * Generic D3 Styles
  **/
+
+svg {
+  font-family: var(--font-family);
+}
 
 .d3-tooltip.hidden {
   display: none;
