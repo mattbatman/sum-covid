@@ -42,7 +42,12 @@ function createDeathsByMedcondChart() {
     rectColorFunction: (d) => '#000000'
   });
 
-  const pieChartData = filter(d => d['Has Underlying Medical Condition'] === 'Yes' || d['Has Underlying Medical Condition'] === 'No', newData)
+  const pieChartData = filter(
+    (d) =>
+      d['Has Underlying Medical Condition'] === 'Yes' ||
+      d['Has Underlying Medical Condition'] === 'No',
+    newData
+  );
 
   deathsShare.create({
     selector: '#deaths-medcond-share-chart',

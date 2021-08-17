@@ -27,9 +27,9 @@ const PieChart = () => {
 
     width =
       parseInt(d3.select(sel).style('width')) - margin.left - margin.right;
-    height = Math.min(width, 500)
+    height = Math.min(width, 400);
 
-    color = (label) => label === 'Yes' ? '#000000' : '#ffffff';
+    color = (label) => (label === 'Yes' ? '#000000' : '#ffffff');
 
     const radius = (Math.min(width, height) / 2) * 0.8;
     arcLabel = d3.arc().innerRadius(radius).outerRadius(radius);
@@ -49,7 +49,8 @@ const PieChart = () => {
     svg = d3
       .select(sel)
       .append('svg')
-      .attr('viewBox', [-width / 2, -height / 2, width, height]);
+      .attr('viewBox', [-width / 2, -height / 2, width, height])
+      .attr('preserveAspectRatio', 'xMinYMin');
 
     svg
       .append('g')
@@ -75,7 +76,7 @@ const PieChart = () => {
           .append('tspan')
           .attr('y', '-0.4em')
           .attr('font-weight', 'bold')
-          .attr('fill', (d) => d.data[lk] === 'Yes' ? '#ffffff' : '#000000')
+          .attr('fill', (d) => (d.data[lk] === 'Yes' ? '#ffffff' : '#000000'))
           .text((d) => d.data[lk])
       )
       .call((text) =>
@@ -84,9 +85,26 @@ const PieChart = () => {
           .append('tspan')
           .attr('x', 0)
           .attr('y', '0.7em')
-          .attr('fill', (d) => d.data[lk] === 'Yes' ? '#ffffff' : '#000000')
+          .attr('fill', (d) => (d.data[lk] === 'Yes' ? '#ffffff' : '#000000'))
           .text((d) => d.data[vk].toLocaleString())
       );
+
+    // call resize
+    d3.select(window).on('resize', resize);
+  }
+
+  function resize(event) {
+    width =
+      parseInt(d3.select(sel).style('width')) - margin.left - margin.right;
+    height = Math.min(width, 400);
+
+    const radius = (Math.min(width, height) / 2) * 0.8;
+    arcLabel = d3.arc().innerRadius(radius).outerRadius(radius);
+
+    svg = d3
+      .select(sel)
+      .select('svg')
+      .attr('viewBox', [-width / 2, -height / 2, width, height]);
   }
 
   return {
