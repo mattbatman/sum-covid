@@ -27,7 +27,7 @@ const BarChart = () => {
   // tooltip
   let tooltip;
   let tipBody;
-  const parseTime = d3.timeParse("%b %e %Y")
+  const parseTime = d3.timeParse('%b %e %Y');
 
   function init({ sel, xTitle, chartTitle, subtitle, newMargin }) {
     selector = sel;
@@ -142,18 +142,25 @@ const BarChart = () => {
     yScale.domain([0, yMax]).range([height, 0]);
 
     if (useTimeTicks) {
-      xAxis.tickValues(xScale.domain().filter(d => {
-        const parsed = parseTime(d)
-        const date = parsed.getDate();
-        const monthMinusOne = parsed.getMonth();
-        if (date === 1) {
-          if (monthMinusOne === 0 || monthMinusOne === 6 || monthMinusOne === 3 || monthMinusOne === 9) {
-            return true
+      xAxis.tickValues(
+        xScale.domain().filter((d) => {
+          const parsed = parseTime(d);
+          const date = parsed.getDate();
+          const monthMinusOne = parsed.getMonth();
+          if (date === 1) {
+            if (
+              monthMinusOne === 0 ||
+              monthMinusOne === 6 ||
+              monthMinusOne === 3 ||
+              monthMinusOne === 9
+            ) {
+              return true;
+            }
           }
-        }
 
-        return false
-      }))
+          return false;
+        })
+      );
     }
 
     xAxis.scale(xScale);
