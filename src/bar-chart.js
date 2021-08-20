@@ -66,7 +66,7 @@ const BarChart = () => {
       .text(xTitle);
 
     // call resize
-    d3.select(window).on('resize', resize);
+    d3.select(window).on(`resize.${selector}`, resize);
 
     // add a chart title
     if (chartTitle) {
