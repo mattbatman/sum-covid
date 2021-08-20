@@ -173,7 +173,17 @@ svg {
   font-size: 13px;
 }
 
+.external-title {
+  margin-top: 1.5rem;
+}
+
 /* ---- Media Queries ---- */
+
+@media (min-width: 688px) {
+  .external-title {
+    margin-top: 0.5rem;
+  }
+}
 
 @media (min-width: 335px) {
   .label,
