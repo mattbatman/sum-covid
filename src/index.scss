@@ -102,11 +102,15 @@ section {
  **/
 
 #deaths-medcond-chart,
-#deaths-medcond-share-chart {
+#deaths-medcond-share-chart,
+#daily-deaths-chart,
+#daily-cases-chart {
   width: 100%;
 }
 
-#deaths-medcond-chart {
+#deaths-medcond-chart,
+#daily-deaths-chart,
+#daily-cases-chart {
   height: 400px;
 }
 
@@ -291,6 +295,25 @@ table tbody tr td {
   a,
   a:visited {
     color: $white;
+  }
+
+  .d3-tooltip.hidden {
+    display: none;
+  }
+
+  .d3-tooltip {
+    border: 3px solid $white;
+    font-family: var(--font-family);
+    font-size: 14px;
+    color: $white;
+    display: table;
+    position: absolute;
+    line-height: 1.1;
+    text-align: left;
+    pointer-events: none;
+    white-space: nowrap;
+    background: $black;
+    width: auto;
   }
 }
 

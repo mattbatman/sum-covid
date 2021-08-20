@@ -27,6 +27,7 @@ const BarChart = () => {
   // tooltip
   let tooltip;
   let tipBody;
+  const parseTime = d3.timeParse("%b %e %Y")
 
   function init({ sel, xTitle, chartTitle, subtitle, newMargin }) {
     selector = sel;
@@ -114,26 +115,46 @@ const BarChart = () => {
     tipBody.append('tr').append('td').attr('class', 'stat');
   }
 
-  function update({ newData, xKey, yKey, overrideYMax, rectColorFunction }) {
+  function update({
+    newData,
+    xKey,
+    yKey,
+    overrideYMax,
+    rectColorFunction,
+    timeXScale,
+    useTimeTicks
+  }) {
     data = newData;
     xk = xKey;
     yk = yKey;
 
-    xScale = d3.scaleBand().padding(0.05);
+    xScale = timeXScale ? timeXScale : d3.scaleBand().padding(0.05);
     xAxis = d3.axisBottom(xScale);
     yScale = d3.scaleLinear();
     yAxis = d3.axisLeft(yScale);
 
-    xScale
-      .domain(data.map((d) => d[xk]))
-      .range([0, width])
-      .padding(0.15);
+    xScale.domain(data.map((d) => d[xk])).range([0, width]);
 
     const yMax = overrideYMax
       ? overrideYMax
       : d3.max(R.map((d) => d[yk], data));
 
     yScale.domain([0, yMax]).range([height, 0]);
+
+    if (useTimeTicks) {
+      xAxis.tickValues(xScale.domain().filter(d => {
+        const parsed = parseTime(d)
+        const date = parsed.getDate();
+        const monthMinusOne = parsed.getMonth();
+        if (date === 1) {
+          if (monthMinusOne === 0 || monthMinusOne === 6 || monthMinusOne === 3 || monthMinusOne === 9) {
+            return true
+          }
+        }
+
+        return false
+      }))
+    }
 
     xAxis.scale(xScale);
 
@@ -161,7 +182,7 @@ const BarChart = () => {
 
   function updateTooltip(event, d) {
     d3.select(`${selector} .d3-tooltip .stat`).text(
-      `${xk}: ${d[yk].toLocaleString()}`
+      `${d[xk]}: ${d[yk].toLocaleString()}`
     );
     d3.select(`${selector} .d3-tooltip`)
       .classed('hidden', false)

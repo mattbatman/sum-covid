@@ -17,24 +17,18 @@ const getRatesData = pipe(addRates, reverse);
 function createRatesByAgeTable(combinedCountData) {
   const ratesByAge = getRatesData(combinedCountData);
 
-  const columns = [
-    'Age Group',
-    'Death Rate',
-    'Survival Rate',
-    'Deaths',
-    'Cases'
-  ];
+  const columns = ['Age Group', 'CFR', 'Survival Rate', 'Deaths', 'Cases'];
 
   const columnsMap = {
     'Age Group': 'age_group',
-    'Death Rate': 'death_rate',
+    CFR: 'death_rate',
     'Survival Rate': 'survival_rate',
     Deaths: 'deaths',
     Cases: 'cases'
   };
 
   const format = (columnHeader, data) => {
-    if (columnHeader === 'Death Rate' || columnHeader === 'Survival Rate') {
+    if (columnHeader === 'CFR' || columnHeader === 'Survival Rate') {
       return d3.format('.3%')(data);
     }
 
