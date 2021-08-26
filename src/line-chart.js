@@ -5,6 +5,8 @@ const LineChart = () => {
   let data = [];
   let selector = '';
   let margin = { top: 10, right: 0, bottom: 40, left: 60 };
+  let width;
+  let height;
   let xk;
   let yk;
   let xScale;
