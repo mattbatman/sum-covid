@@ -244,6 +244,14 @@ svg {
   .stat-cards {
     flex-flow: row wrap;
 
+    .stat-card {
+      flex: 0 1 50%;
+    }
+
+    .stat-card.first-row {
+      margin-bottom: 1.5rem;
+    }
+
     .stat-card + .stat-card {
       margin-top: 0;
     }

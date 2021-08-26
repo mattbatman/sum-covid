@@ -12,6 +12,10 @@ const LineChart = () => {
   let xAxis;
   let yAxis;
   let line;
+  let title = '';
+  let subtitle = '';
+  let tooltip;
+  let tipBody;
 
   function init({ sel, xTitle, chartTitle, subtitle, newMargin }) {
     selector = sel;
@@ -161,8 +165,7 @@ const LineChart = () => {
       .x((d) => xScale(d[xk]))
       .y((d) => yScale(d[yk]));
 
-    svg.select('path.yellow-line')
-      .attr('d', line);
+    svg.select('path.yellow-line').attr('d', line);
   }
 
   return { init, update };
