@@ -7,6 +7,7 @@ const LineChart = () => {
   let margin = { top: 10, right: 0, bottom: 40, left: 60 };
   let width;
   let height;
+  let svg;
   let xk;
   let yk;
   let xScale;
