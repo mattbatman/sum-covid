@@ -3,11 +3,12 @@
 $white: #ffffff;
 $black: #000000;
 $red: #e74e38;
-$white-red: #f8eedc;
+$off-white: #f8eedc;
 $blue: #4f7da3;
 $grey-blue: #d8dbdd;
 $light-green: #a9c774;
 $dark-green: #1b5037;
+$yellow: #fdba3a;
 
 :root {
   font-family: 'Inter', sans-serif;
@@ -104,19 +105,25 @@ section {
 #deaths-medcond-chart,
 #deaths-medcond-share-chart,
 #daily-deaths-chart,
-#daily-cases-chart {
+#daily-cases-chart,
+#weekly-deaths-chart {
   width: 100%;
 }
 
 #deaths-medcond-chart,
 #daily-deaths-chart,
-#daily-cases-chart {
+#daily-cases-chart,
+#weekly-deaths-chart {
   height: 400px;
 }
 
 .external-title {
   margin-left: 60px;
   margin-bottom: 1rem;
+}
+
+.yellow-line {
+  stroke: $yellow;
 }
 
 /**
@@ -334,7 +341,7 @@ table tbody tr td {
 
 .red-on-white {
   color: $red;
-  background-color: $white-red;
+  background-color: $off-white;
 
   a,
   a:visited {
@@ -357,5 +364,15 @@ table tbody tr td {
   a,
   a:visited {
     color: $blue;
+  }
+}
+
+.green-on-white {
+  color: $dark-green;
+  background-color: $off-white;
+
+  a,
+  a:visited {
+    color: $dark-green;
   }
 }
