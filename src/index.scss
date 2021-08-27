@@ -383,4 +383,27 @@ table tbody tr td {
   a:visited {
     color: $dark-green;
   }
+
+  .d3-tooltip.hidden {
+    display: none;
+  }
+
+  .d3-tooltip {
+    border: 3px solid $dark-green;
+    font-family: var(--font-family);
+    font-size: 14px;
+    color: $dark-green;
+    display: table;
+    position: absolute;
+    line-height: 1.1;
+    text-align: left;
+    pointer-events: none;
+    white-space: nowrap;
+    background: $off-white;
+    width: auto;
+  }
+
+  .gradient-path {
+    stroke: $light-green;
+  }
 }
