@@ -179,7 +179,14 @@ const LineChart = () => {
       `translate(${xScale(data.dates[i])},${yScale(s.values[i])})`
     );
 
-    updateTooltip(event, [xk], displayDate(data.dates[i]), s.name, s.values[i]);
+    updateTooltip(
+      event,
+      [xk],
+      displayDate(data.dates[i]),
+      s.name,
+      s.values[i],
+      s.color
+    );
   }
 
   function entered() {
@@ -196,7 +203,8 @@ const LineChart = () => {
     firstRowLabel = '',
     firstRowKey = '',
     secondRowLabel = '',
-    secondRowKey = ''
+    secondRowKey = '',
+    color = '#000000'
   ) {
     d3.select(`${selector} .d3-tooltip .first-row`).text(
       `${firstRowLabel}: ${firstRowKey.toLocaleString()}`
@@ -204,7 +212,10 @@ const LineChart = () => {
     d3.select(`${selector} .d3-tooltip .second-row`).text(
       `${secondRowLabel}: ${secondRowKey.toLocaleString()}`
     );
+    d3.select(`${selector} .d3-tooltip tr`).style('border-color', color);
     d3.select(`${selector} .d3-tooltip`)
+      .style('border', `3px solid ${color}`)
+      .style('color', color)
       .classed('hidden', false)
       .style('left', () => {
         if (
