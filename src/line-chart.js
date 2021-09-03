@@ -107,7 +107,7 @@ const LineChart = () => {
     tipBody = tooltip.append('tbody');
 
     tipBody.append('tr').append('td').attr('class', 'first-row');
-    tipBody.append('tr').append('td').attr('class', 'second-row')
+    tipBody.append('tr').append('td').attr('class', 'second-row');
   }
 
   function update({ newData, xKey, yKey }) {
@@ -120,32 +120,32 @@ const LineChart = () => {
     yScale = d3.scaleLinear();
     yAxis = d3.axisLeft(yScale);
 
-    const xDomain = d3.extent(data.map((d) => d[xk]));
-    const yMax = d3.max(R.map((d) => d[yk], data));
-    xScale.domain(xDomain).range([0, width]);
-    yScale.domain([0, yMax]).range([height, 0]);
+    xScale.domain(d3.extent(data.dates)).range([0, width]);
+    yScale
+      .domain([0, d3.max(data.series, (d) => d3.max(d.values))])
+      .nice()
+      .range([height, 0]);
 
     xAxis.scale(xScale);
     yAxis.scale(yScale);
 
     line = d3
       .line()
-      .x((d) => xScale(d[xk]))
-      .y((d) => yScale(d[yk]));
+      .x((d, i) => xScale(data.dates[i]))
+      .y((d) => yScale(d));
 
     path = svg
       .append('g')
       .attr('fill', 'none')
-      .attr('class', 'yellow-line')
-      .attr('stroke', 'yellow')
       .attr('stroke-width', 1.5)
       .attr('stroke-linejoin', 'round')
       .attr('stroke-linecap', 'round')
       .selectAll('path')
-      .data([data])
+      .data(data.series)
       .join('path')
       .style('mix-blend-mode', 'multiply')
-      .attr('d', line);
+      .attr('stroke', (d) => d.color)
+      .attr('d', (d) => line(d.values));
 
     // call the axes
     svg.select('.x.axis').call(xAxis);
@@ -171,39 +171,37 @@ const LineChart = () => {
     const pointer = d3.pointer(event, this);
     const xm = xScale.invert(pointer[0]);
     const ym = yScale.invert(pointer[1]);
-    const i = d3.bisectCenter(
-      data.map((d) => d[xk]),
-      xm
-    );
-    const s = d3.least(data, (d) => Math.abs(d[yk] - ym));
-    path
-      .classed('gradient-path', (d) => (d === s ? false : true))
-      .filter((d) => d === s)
-      .raise();
+    const i = d3.bisectCenter(data.dates, xm);
+    const s = d3.least(data.series, (d) => Math.abs(d.values[i] - ym));
+    path.filter((d) => d === s).raise();
     dot.attr(
       'transform',
-      `translate(${xScale(data[i][xk])},${yScale(data[i][yk])})`
+      `translate(${xScale(data.dates[i])},${yScale(s.values[i])})`
     );
-    
-    updateTooltip(event, [xk], displayDate(data[i][xk]), [yk], data[i][yk])
+
+    updateTooltip(event, [xk], displayDate(data.dates[i]), s.name, s.values[i]);
   }
 
   function entered() {
-    path.style('mix-blend-mode', null).classed('gradient-path', false);
     dot.attr('display', null);
   }
 
   function left() {
-    path.style('mix-blend-mode', 'multiply').classed('gradient-path', false);
     dot.attr('display', 'none');
     d3.select(`${selector} .d3-tooltip`).classed('hidden', true);
   }
 
-  function updateTooltip(event, firstRowLabel = '', firstRowKey = '', secondRowLabel = '', secondRowKey = '') {
+  function updateTooltip(
+    event,
+    firstRowLabel = '',
+    firstRowKey = '',
+    secondRowLabel = '',
+    secondRowKey = ''
+  ) {
     d3.select(`${selector} .d3-tooltip .first-row`).text(
       `${firstRowLabel}: ${firstRowKey.toLocaleString()}`
     );
-d3.select(`${selector} .d3-tooltip .second-row`).text(
+    d3.select(`${selector} .d3-tooltip .second-row`).text(
       `${secondRowLabel}: ${secondRowKey.toLocaleString()}`
     );
     d3.select(`${selector} .d3-tooltip`)
@@ -267,12 +265,11 @@ d3.select(`${selector} .d3-tooltip .second-row`).text(
     svg.select('.x.axis').call(xAxis);
     svg.select('.y.axis').call(yAxis);
 
-    line = d3
-      .line()
-      .x((d) => xScale(d[xk]))
-      .y((d) => yScale(d[yk]));
+    d3.line()
+      .x((d, i) => xScale(data.dates[i]))
+      .y((d) => yScale(d));
 
-    path.attr('d', line);
+    path.attr('d', (d) => line(d.values));
   }
 
   return { init, update };

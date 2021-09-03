@@ -106,24 +106,22 @@ section {
 #deaths-medcond-share-chart,
 #daily-deaths-chart,
 #daily-cases-chart,
-#weekly-deaths-chart {
+#weekly-flu-deaths-chart,
+#weekly-combined-deaths-chart {
   width: 100%;
 }
 
 #deaths-medcond-chart,
 #daily-deaths-chart,
 #daily-cases-chart,
-#weekly-deaths-chart {
+#weekly-flu-deaths-chart,
+#weekly-combined-deaths-chart {
   height: 400px;
 }
 
 .external-title {
   margin-left: 60px;
   margin-bottom: 1rem;
-}
-
-.yellow-line {
-  stroke: $yellow;
 }
 
 /**

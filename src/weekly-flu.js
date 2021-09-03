@@ -4,26 +4,52 @@ import weeklyData from './data/weekly-flu-deaths.json';
 
 function weeklyCharts() {
   const timeParser = d3.timeParse('%Y %U');
-  const weeklyDeathsChart = lineChart();
+  const fluDeathsChart = lineChart();
+  const combinedDeathsChart = lineChart();
 
-  weeklyDeathsChart.init({
-    sel: '#weekly-deaths-chart'
+  fluDeathsChart.init({
+    sel: '#weekly-flu-deaths-chart'
   });
 
-  const newData = weeklyData.map((d) => {
-    const weekStarting = timeParser(`${d.year} ${d.week}`);
-    weekStarting.setDate(weekStarting.getDate() + 6);
-
-    return {
-      ...d,
-      ['Covid 19 Deaths']: Number(d.COVID_19_deaths),
-      ['Flu Deaths']: Number(d.influenza_deaths),
-      ['Week Ending']: weekStarting
-    };
+  combinedDeathsChart.init({
+    sel: '#weekly-combined-deaths-chart'
   });
 
-  weeklyDeathsChart.update({
-    newData,
+  const multiLineData = {
+    y: 'Weekly Deaths',
+    series: [
+      {
+        name: 'Flu Deaths',
+        color: '#fdba3a',
+        values: weeklyData.map((d) => Number(d.influenza_deaths))
+      },
+      {
+        name: 'COVID 19 Deaths',
+        color: '#1b5037',
+        values: weeklyData.map((d) => Number(d.COVID_19_deaths))
+      }
+    ],
+    dates: weeklyData.map((d) => {
+      const weekStarting = timeParser(`${d.year} ${d.week}`);
+      weekStarting.setDate(weekStarting.getDate() + 6);
+
+      return weekStarting;
+    })
+  };
+
+  combinedDeathsChart.update({
+    newData: multiLineData,
+    yKey: 'Flu Deaths',
+    xKey: 'Week Ending'
+  });
+
+  const singleLineData = {
+    ...multiLineData,
+    series: multiLineData.series.filter((d) => d.name === 'Flu Deaths')
+  };
+
+  fluDeathsChart.update({
+    newData: singleLineData,
     yKey: 'Flu Deaths',
     xKey: 'Week Ending'
   });
