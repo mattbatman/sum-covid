@@ -59,8 +59,7 @@
       <p>
         This data is from the CDC's
         <a href="https://dev.socrata.com/foundry/data.cdc.gov/vbim-akqf">COVID-19 Case Surveillance Public Use Data API</a>,
-        last updated on August 24, 2021. The CDC's case surveillance data has about <sup>3</sup>&frasl;<sub>4</sub>ths of
-        the cases as what it reports via the COVID Tracker Data. The case fatality rate ("CFR") was calculated as
+        last updated on September 9, 2021, and has data from 29,851,450 cases. The case fatality rate ("CFR") was calculated as
         the deaths in the age group divided by the number of cases in that age group. The survival rate is the number of
         cases that did not result in a death, or "1 minus the death rate."
       </p>
@@ -73,13 +72,13 @@
       <h2>Deaths and Other Medical Conditions</h2>
       <p>
         The CDC's <a href="https://dev.socrata.com/foundry/data.cdc.gov/vbim-akqf">COVID-19 Case Surveillance
-          Public Use Data API</a> presents the presence of underlying comorbidity
+          Public Use Data API</a> (last updated on September 9, 2021 reflecting 29,841,450 cases) presents the presence of underlying comorbidity
           or disease as a field with the possible values of: yes, no, unknown,
-          or missing. 357,111 (~70%) of the case data has this field marked as "Missing."
+          or missing. 367,359 (~70%) of the case data with a death has this field marked as "Missing."
       </p>
       <div id="deaths-medcond-chart" className="chart-container"></div>
       <p>
-        There are 108,579 cases in the data with a value of "Yes" or "No." Of these, 99,953 (~92%) had an underlying comorbidity or disease. 8,626 (~8%) did not.
+        There are 110,167 cases in the data with a value of "Yes" or "No." Of these, 101,140 (~92%) had an underlying comorbidity or disease. 9,027 (~8%) did not.
       </p>
       <div id="deaths-medcond-share-chart" className="chart-container"></div>
     </div>
