@@ -17,26 +17,26 @@ function selectCausesOfDeathChart() {
   });
 
   /*
-    * "natural_cause"
-    * "septicemia"
-    * "malignant_neoplasms"
-    * "diabetes_mellitus"
-    * "alzheimer_disease",
-    * "influenza_and_pneumonia",
-    * "chronic_lower_respiratory"
-    * "other_diseases_of_respiratory",
-    * "nephritis_nephrotic_syndrome",
-    * "symptoms_signs_and_abnormal",
-    * "diseases_of_heart"
-    * "cerebrovascular_diseases",
-    * "accidents_unintentional",
-    * "motor_vehicle_accidents"
-    * "intentional_self_harm_suicide",
-    * "assault_homicide",
-    * "drug_overdose",
-    * "covid_19_multiple_cause_of"
-    * "covid_19_underlying_cause"
-  */
+   * "natural_cause"
+   * "septicemia"
+   * "malignant_neoplasms"
+   * "diabetes_mellitus"
+   * "alzheimer_disease",
+   * "influenza_and_pneumonia",
+   * "chronic_lower_respiratory"
+   * "other_diseases_of_respiratory",
+   * "nephritis_nephrotic_syndrome",
+   * "symptoms_signs_and_abnormal",
+   * "diseases_of_heart"
+   * "cerebrovascular_diseases",
+   * "accidents_unintentional",
+   * "motor_vehicle_accidents"
+   * "intentional_self_harm_suicide",
+   * "assault_homicide",
+   * "drug_overdose",
+   * "covid_19_multiple_cause_of"
+   * "covid_19_underlying_cause"
+   */
 
   const convertToNumber = (s) => (Number(s) ? Number(s) : 0);
 
@@ -135,7 +135,7 @@ function selectCausesOfDeathChart() {
           convertToNumber(chronic_lower_respiratory)
         )
       },
-            {
+      {
         name: 'Other Diseases of Respiratory',
         color: '#853c69',
         values: data.map(({ other_diseases_of_respiratory }) =>
