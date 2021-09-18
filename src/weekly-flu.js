@@ -43,6 +43,10 @@ function weeklyCharts() {
     xKey: 'Week Ending'
   });
 
+  combinedDeathsChart.createLegend({
+    legendSelector: '#weekly-combined-deaths-legend'
+  });
+
   const singleLineData = {
     ...multiLineData,
     series: multiLineData.series.filter((d) => d.name === 'Flu Deaths')

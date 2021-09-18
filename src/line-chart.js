@@ -258,6 +258,44 @@ const LineChart = () => {
       );
   }
 
+  function createLegend({ legendSelector }) {
+    const offset = 10;
+    const yIncrement = (d, i) => offset + i * 15;
+
+    const legend = d3
+      .select(legendSelector)
+      .append('svg')
+      .attr('width', '100%')
+      .attr('height', `${offset + data.series.length * 15}`)
+      .append('g');
+
+    legend
+      .selectAll('line')
+      .data(data.series)
+      .join('line')
+      .attr('stroke-width', 5)
+      .attr('stroke-linejoin', 'round')
+      .attr('stroke-linecap', 'round')
+      .attr('stroke', (d) => d.color)
+      .attr('x1', margin.left)
+      .attr('x2', margin.left + 10)
+      .attr('y1', yIncrement)
+      .attr('y2', yIncrement);
+
+    legend
+      .selectAll('text')
+      .data(data.series)
+      .enter()
+      .append('text')
+      .attr('class', 'legend-label')
+      .attr('x', margin.left + 15)
+      .attr('y', yIncrement)
+      .attr('text-anchor', 'left')
+      .style('alignment-baseline', 'middle')
+      .attr('fill', (d) => d.color)
+      .text((d) => d.name);
+  }
+
   function resize(event) {
     width =
       parseInt(d3.select(selector).style('width')) - margin.left - margin.right;
@@ -283,7 +321,7 @@ const LineChart = () => {
     path.attr('d', (d) => line(d.values));
   }
 
-  return { init, update };
+  return { init, update, createLegend };
 };
 
 export default LineChart;
