@@ -3,12 +3,24 @@
 $white: #ffffff;
 $black: #000000;
 $red: #e74e38;
+$orange: #e78d38;
+$pink: #e7388f;
+$purple-pink: #e138e7;
+$ugh: #853c69;
 $off-white: #f8eedc;
 $blue: #4f7da3;
+$teal: #4fa3a3;
+$dark-teal: #234747;
+$purple-blue: #574fa3;
+$purple-red: #884fa3;
 $grey-blue: #d8dbdd;
+$rotting-lime: #91a36e;
 $light-green: #a9c774;
 $dark-green: #1b5037;
 $yellow: #fdba3a;
+$yellow-brown-grey: #787c3c;
+$brown: #7c5a3c;
+$red-brown: #7c3c3c;
 
 :root {
   font-family: 'Inter', sans-serif;
@@ -103,20 +115,15 @@ section {
  **/
 
 #deaths-medcond-chart,
-#deaths-medcond-share-chart,
-#daily-deaths-chart,
-#daily-cases-chart,
-#weekly-flu-deaths-chart,
-#weekly-combined-deaths-chart {
-  width: 100%;
-}
-
-#deaths-medcond-chart,
 #daily-deaths-chart,
 #daily-cases-chart,
 #weekly-flu-deaths-chart,
 #weekly-combined-deaths-chart {
   height: 400px;
+}
+
+#select-causes-death {
+  height: 525px;
 }
 
 .external-title {
@@ -154,7 +161,8 @@ svg {
   padding: 0.5rem;
 }
 
-.chart-container {
+.chart-container,
+.legend-container {
   width: 100%;
 }
 
@@ -172,6 +180,10 @@ svg {
 
 .title {
   font-size: 10px;
+}
+
+.legend-label {
+  font-size: 13px;
 }
 
 .notes {
