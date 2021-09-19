@@ -1,0 +1,22 @@
+{
+  "symptoms_signs_and_abnormal": 34311,
+  "septicemia": 40125,
+  "other_diseases_of_respiratory": 45179,
+  "nephritis_nephrotic_syndrome": 52600,
+  "natural_cause": 3104550,
+  "motor_vehicle_accidents": 42649,
+  "malignant_neoplasms": 603090,
+  "intentional_self_harm_suicide": 46075,
+  "influenza_and_pneumonia": 53685,
+  "drug_overdose": 92428,
+  "diseases_of_heart": 698181,
+  "diabetes_mellitus": 102304,
+  "covid_19_underlying_cause": 351430,
+  "covid_19_multiple_cause_of": 385258,
+  "chronic_lower_respiratory": 152771,
+  "cerebrovascular_diseases": 160530,
+  "assault_homicide": 24697,
+  "alzheimer_disease": 134281,
+  "all_cause": 3390023,
+  "accidents_unintentional": 202382
+}

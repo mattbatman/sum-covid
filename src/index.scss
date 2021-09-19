@@ -126,9 +126,18 @@ section {
   height: 525px;
 }
 
+#select-causes-death .x.axis .tick text {
+  transform: rotate(66deg);
+  text-anchor: start !important;
+}
+
 .external-title {
   margin-left: 60px;
   margin-bottom: 1rem;
+}
+
+.select-causes-death-title.external-title {
+  margin-left: 71px;
 }
 
 /**

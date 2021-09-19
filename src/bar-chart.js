@@ -171,7 +171,7 @@ const BarChart = () => {
 
     rect
       .join('rect')
-      .style('fill', (d) => rectColorFunction(d[xk]))
+      .style('fill', rectColorFunction)
       .attr('y', (d) => yScale(d[yk]))
       .attr('height', (d) => height - yScale(d[yk]))
       .attr('x', (d) => xScale(d[xk]))

@@ -1,187 +1,94 @@
-import * as d3 from './d3-roll';
-import lineChart from './line-chart';
-import monthlyDeathsBySelectCauseData from './data/monthly-deaths-by-cause-20-21-raw.json';
+import barChart from './bar-chart';
+import { mapObjIndexed, omit, values, sortBy, pipe, prop, reverse } from 'ramda';
+import annualDeaths from './data/annual-deaths-by-cause-2020.json';
 
 function selectCausesOfDeathChart() {
-  const selectCausesChart = lineChart();
-  const data = monthlyDeathsBySelectCauseData.filter((d) => {
-    if (d.year === '2021' && d.month === '9') {
-      return false;
-    }
+  const selectCausesChart = barChart();
+  const getColor = (k) => {
+    const colorMap = {
+      symptoms_signs_and_abnormal: '#91a36e',
+      septicemia: '#787c3c',
+      other_diseases_of_respiratory: '#853c69',
+      nephritis_nephrotic_syndrome: '#234747',
+      natural_cause: '#000000',
+      motor_vehicle_accidents: '#c7c7c7',
+      malignant_neoplasms: '#4f7da3',
+      intentional_self_harm_suicide: '#574fa3',
+      influenza_and_pneumonia: '#fdba3a',
+      drug_overdose: '#e78d38',
+      diseases_of_heart: '#e74e38',
+      diabetes_mellitus: '#7c5a3c',
+      covid_19_underlying_cause: '#1b5037',
+      covid_19_multiple_cause_of: '#a9c774',
+      chronic_lower_respiratory: '#7c3c3c',
+      cerebrovascular_diseases: '#e138e7',
+      assault_homicide: '#884fa3',
+      alzheimer_disease: '#e7388f',
+      all_cause: '#ffffff',
+      accidents_unintentional: '#4fa3a3'
+    };
 
-    return true;
-  });
+    return colorMap[k];
+  };
+  const getLabel = (k) => {
+    const labelMap = {
+      symptoms_signs_and_abnormal:
+        'Abnormal Findings',
+      septicemia: 'Septicemia',
+      other_diseases_of_respiratory: 'Other Respiratory',
+      nephritis_nephrotic_syndrome: 'Nephritis Nephrotic Syndrome',
+      natural_cause: 'Natural Cause',
+      motor_vehicle_accidents: 'Motor Vehicle Accidents',
+      malignant_neoplasms: 'Malignant Neoplasms',
+      intentional_self_harm_suicide: 'Suicide',
+      influenza_and_pneumonia: 'Influenze and Pneumonia',
+      drug_overdose: 'Drug Overdose',
+      diseases_of_heart: 'Diseases of Heart',
+      diabetes_mellitus: 'Diabetes Mellitus',
+      covid_19_underlying_cause: 'COVID 19 Underlying Cause',
+      covid_19_multiple_cause_of: 'COVID 19 Multiple Cause of',
+      chronic_lower_respiratory: 'Chronic Lower Respiratory',
+      cerebrovascular_diseases: 'Cerebrovascular Diseases',
+      assault_homicide: 'Homicide',
+      alzheimer_disease: 'Alzheimer Disease',
+      all_cause: 'All Causes',
+      accidents_unintentional: 'Accidents Unintentional'
+    };
 
-  selectCausesChart.init({
-    sel: '#select-causes-death'
-  });
-
-  /*
-   * "natural_cause"
-   * "septicemia"
-   * "malignant_neoplasms"
-   * "diabetes_mellitus"
-   * "alzheimer_disease",
-   * "influenza_and_pneumonia",
-   * "chronic_lower_respiratory"
-   * "other_diseases_of_respiratory",
-   * "nephritis_nephrotic_syndrome",
-   * "symptoms_signs_and_abnormal",
-   * "diseases_of_heart"
-   * "cerebrovascular_diseases",
-   * "accidents_unintentional",
-   * "motor_vehicle_accidents"
-   * "intentional_self_harm_suicide",
-   * "assault_homicide",
-   * "drug_overdose",
-   * "covid_19_multiple_cause_of"
-   * "covid_19_underlying_cause"
-   */
-
-  const convertToNumber = (s) => (Number(s) ? Number(s) : 0);
-
-  const multiLineData = {
-    y: 'Monthly Deaths',
-    series: [
-      {
-        name: 'Natural Cause',
-        color: '#000000',
-        values: data.map(({ natural_cause }) => convertToNumber(natural_cause))
-      },
-      {
-        name: 'COVID 19 Multiple Cause of',
-        color: '#a9c774',
-        values: data.map(({ covid_19_multiple_cause_of }) =>
-          convertToNumber(covid_19_multiple_cause_of)
-        )
-      },
-      {
-        name: 'COVID 19 Underlying Cause',
-        color: '#1b5037',
-        values: data.map(({ covid_19_underlying_cause }) =>
-          convertToNumber(covid_19_underlying_cause)
-        )
-      },
-      {
-        name: 'Diseases of Heart',
-        color: '#e74e38',
-        values: data.map(({ diseases_of_heart }) =>
-          convertToNumber(diseases_of_heart)
-        )
-      },
-      {
-        name: 'Diabetes Mellitus',
-        color: '#7c5a3c',
-        values: data.map(({ diabetes_mellitus }) =>
-          convertToNumber(diabetes_mellitus)
-        )
-      },
-      {
-        name: 'Motor Vehical Accidents',
-        color: '#d8dbdd',
-        values: data.map(({ motor_vehicle_accidents }) =>
-          convertToNumber(motor_vehicle_accidents)
-        )
-      },
-      {
-        name: 'Septicemia',
-        color: '#787c3c',
-        values: data.map(({ septicemia }) => convertToNumber(septicemia))
-      },
-      {
-        name: 'Malignant Neoplasms',
-        color: '#4f7da3',
-        values: data.map(({ malignant_neoplasms }) =>
-          convertToNumber(malignant_neoplasms)
-        )
-      },
-      {
-        name: 'Alzheimer Disease',
-        color: '#e7388f',
-        values: data.map(({ alzheimer_disease }) =>
-          convertToNumber(alzheimer_disease)
-        )
-      },
-      {
-        name: 'Intentional Self Harm Suicide',
-        color: '#574fa3',
-        values: data.map(({ intentional_self_harm_suicide }) =>
-          convertToNumber(intentional_self_harm_suicide)
-        )
-      },
-      {
-        name: 'Assault Homicide',
-        color: '#884fa3',
-        values: data.map(({ assault_homicide }) =>
-          convertToNumber(assault_homicide)
-        )
-      },
-      {
-        name: 'Drug Overdose',
-        color: '#e78d38',
-        values: data.map(({ drug_overdose }) => convertToNumber(drug_overdose))
-      },
-      {
-        name: 'Accidents Unintentional',
-        color: '#4fa3a3',
-        values: data.map(({ accidents_unintentional }) =>
-          convertToNumber(accidents_unintentional)
-        )
-      },
-      {
-        name: 'Chronic Lower Respiratory',
-        color: '#7c3c3c',
-        values: data.map(({ chronic_lower_respiratory }) =>
-          convertToNumber(chronic_lower_respiratory)
-        )
-      },
-      {
-        name: 'Other Diseases of Respiratory',
-        color: '#853c69',
-        values: data.map(({ other_diseases_of_respiratory }) =>
-          convertToNumber(other_diseases_of_respiratory)
-        )
-      },
-      {
-        name: 'Influenza and Pneumonia',
-        color: '#fdba3a',
-        values: data.map(({ influenza_and_pneumonia }) =>
-          convertToNumber(influenza_and_pneumonia)
-        )
-      },
-      {
-        name: 'Cerebrovascular Diseases',
-        color: '#e138e7',
-        values: data.map(({ cerebrovascular_diseases }) =>
-          convertToNumber(cerebrovascular_diseases)
-        )
-      },
-      {
-        name: 'Nephritis Nephrotic Syndrome',
-        color: '#234747',
-        values: data.map(({ nephritis_nephrotic_syndrome }) =>
-          convertToNumber(nephritis_nephrotic_syndrome)
-        )
-      },
-      {
-        name: 'Symptoms, signs and abnormal clinical and laboratory findings, not elsewhere classified',
-        color: '#91a36e',
-        values: data.map(({ symptoms_signs_and_abnormal }) =>
-          convertToNumber(symptoms_signs_and_abnormal)
-        )
-      }
-    ],
-    dates: data.map(({ end_date }) => new Date(end_date))
+    return labelMap[k];
   };
 
-  selectCausesChart.update({
-    newData: multiLineData,
-    yKey: 'Monthly Deaths',
-    xKey: 'Month Ending'
+  selectCausesChart.init({
+    sel: '#select-causes-death',
+    newMargin: {
+      top: 0,
+      right: 0,
+      bottom: 185,
+      left: 71
+    }
   });
 
-  selectCausesChart.createLegend({
-    legendSelector: '#select-causes-death-legend'
+  const getChartData = pipe(
+    omit(['all_cause']),
+    (x) =>
+      mapObjIndexed(
+        (val, key) => ({
+          Deaths: val,
+          Cause: getLabel(key),
+          color: getColor(key)
+        }),
+        x
+      ),
+    values,
+    x => sortBy(prop('Deaths'), x),
+    reverse
+  );
+
+  selectCausesChart.update({
+    newData: getChartData(annualDeaths),
+    yKey: 'Deaths',
+    xKey: 'Cause',
+    rectColorFunction: (d) => d.color
   });
 }
 
