@@ -1,5 +1,13 @@
 import barChart from './bar-chart';
-import { mapObjIndexed, omit, values, sortBy, pipe, prop, reverse } from 'ramda';
+import {
+  mapObjIndexed,
+  omit,
+  values,
+  sortBy,
+  pipe,
+  prop,
+  reverse
+} from 'ramda';
 import annualDeaths from './data/annual-deaths-by-cause-2020.json';
 
 function selectCausesOfDeathChart() {
@@ -32,8 +40,7 @@ function selectCausesOfDeathChart() {
   };
   const getLabel = (k) => {
     const labelMap = {
-      symptoms_signs_and_abnormal:
-        'Abnormal Findings',
+      symptoms_signs_and_abnormal: 'Abnormal Findings',
       septicemia: 'Septicemia',
       other_diseases_of_respiratory: 'Other Respiratory',
       nephritis_nephrotic_syndrome: 'Nephritis Nephrotic Syndrome',
@@ -80,7 +87,7 @@ function selectCausesOfDeathChart() {
         x
       ),
     values,
-    x => sortBy(prop('Deaths'), x),
+    (x) => sortBy(prop('Deaths'), x),
     reverse
   );
 
