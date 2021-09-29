@@ -118,7 +118,8 @@ section {
 #daily-deaths-chart,
 #daily-cases-chart,
 #weekly-flu-deaths-chart,
-#weekly-combined-deaths-chart {
+#weekly-combined-deaths-chart,
+#vaers-deaths-by-year {
   height: 400px;
 }
 
@@ -128,6 +129,11 @@ section {
 
 #select-causes-death .x.axis .tick text {
   transform: rotate(66deg);
+  text-anchor: start !important;
+}
+
+#vaers-deaths-by-year .x.axis .tick text {
+  transform: rotate(55deg);
   text-anchor: start !important;
 }
 
