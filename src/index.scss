@@ -129,7 +129,7 @@ section {
 #daily-cases-chart,
 #weekly-flu-deaths-chart,
 #weekly-combined-deaths-chart,
-#vaers-deaths-by-year {
+.vaers-chart {
   height: 400px;
 }
 
@@ -142,13 +142,13 @@ section {
   text-anchor: start !important;
 }
 
-#vaers-deaths-by-year .x.axis .tick text {
+.vaers-chart .x.axis .tick text {
   transform: rotate(66deg);
   text-anchor: start !important;
 }
 
 @media (min-width: 400px) {
-  #vaers-deaths-by-year .x.axis .tick text {
+  .vaers-chart .x.axis .tick text {
     transform: rotate(55deg);
   }
 }
@@ -162,8 +162,12 @@ section {
   margin-left: 71px;
 }
 
-.vaers-deaths-by-year-title.external-title {
+.vaers-title.external-title {
   margin-left: 45px;
+}
+
+.vaers-title-extended.external-title {
+  margin-left: 55px;
 }
 
 /**
