@@ -84,6 +84,11 @@ h3.inner-sectional {
   margin-top: 3rem;
 }
 
+h4 {
+  font-size: 2rem;
+  margin: 2rem 0 0 0;
+}
+
 @media (min-width: 550px) {
   h1 {
     font-size: 9.99rem;
@@ -278,6 +283,10 @@ svg {
   .stat-card + .stat-card {
     margin-top: 1.5rem;
   }
+}
+
+.stat-cards.with-header {
+  margin-top: 1rem;
 }
 
 @media (min-width: 650px) {
