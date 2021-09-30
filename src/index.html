@@ -25,7 +25,7 @@
       <h2>Total Cases, Deaths, and Case Fatality Rate</h2>
       <p>
         This data is from the CDC's <a href="https://covid.cdc.gov/covid-data-tracker/#datatracker-home">COVID Tracker Data</a>
-        as of September 28, 2021. <a href="https://www.cdc.gov/coronavirus/2019-ncov/covid-data/faq-surveillance.html">According to the CDC</a>,
+        as of September 29, 2021. <a href="https://www.cdc.gov/coronavirus/2019-ncov/covid-data/faq-surveillance.html">According to the CDC</a>,
         it "includes deaths reported by state, local, and territorial health departments. Reporting frequency might vary by
         jurisdiction. This reflects the most up-to-date information received by CDC based on preliminary reporting." These totals are since January 21, 2020.
       </p>
@@ -35,11 +35,11 @@
       <div class="stat-cards">
         <div class="stat-card first-row">
           <div class="stat-card-title">Total Cases</div>
-          <div class="stat-card-stat">43,051,429</div>
+          <div class="stat-card-stat">43,169,823</div>
         </div>
         <div class="stat-card first-row">
           <div class="stat-card-title">Total Deaths</div>
-          <div class="stat-card-stat">689,534</div>
+          <div class="stat-card-stat">691,517</div>
         </div>
         <div class="stat-card">
           <div class="stat-card-title">CFR</div>
@@ -90,7 +90,7 @@
       <p>
         This data was downloaded directly from the
         <a href="https://covid.cdc.gov/covid-data-tracker/#trends_dailytrendscases">CDC's COVID Tracker Daily and Total Trends</a>
-        on September 29, 2021. The last date with data from the CDC is September 27, 2021.
+        on September 30, 2021. The last date with data from the CDC is September 28, 2021.
       </p>
       <h3 class="external-title">Deaths per Day</h3>
       <div id="daily-deaths-chart" class="chart-container"></div>
@@ -135,20 +135,47 @@
   <section class="white-on-black">
     <div class="container">
       <h2>Vaccine Adverse Event Reporting System (VAERS)</h2>
-    <p>
-      The data for the graph below was exported from the CDC WONDER system
-      of VAERS data. The dataset includes all data processed as of September 17,
-      2021. It was downloaded on September 27, 2021.
-    </p>
-    <p>The graph below displays total deaths reported to VAERS by year for any vaccine.
-      To replicate the data,
-      <a href="https://wonder.cdc.gov/vaers.html">visit the request system</a>,
-      agree to terms at the bottom, click "VAERS Data Search" in the middle of
-      the page, group results by Year Reported, ensure "The United States/Territories/Unknown"
-      is selected in step 4, and select "Death" as the Event Category in step 5.
-    </p>
-    <h3 class="external-title vaers-deaths-by-year-title">Deaths Reported to VAERS by Year for All Vaccines</h3>
-    <div id="vaers-deaths-by-year" class="chart-container"></div>
+      <p>
+        The data for the graph below was exported from the CDC WONDER system
+        of VAERS data. The dataset includes all data processed as of September 17,
+        2021. It was downloaded on September 27, 2021.
+      </p>
+      <p>The graph below displays total deaths reported to VAERS by year for any vaccine.
+        To replicate the data,
+        <a href="https://wonder.cdc.gov/vaers.html">visit the request system</a>,
+        agree to terms at the bottom, click "VAERS Data Search" in the middle of
+        the page, group results by Year Reported, ensure "The United States/Territories/Unknown"
+        is selected in step 4, and select "Death" as the Event Category in step 5.
+      </p>
+      <h3 class="external-title vaers-deaths-by-year-title">Deaths Reported to VAERS by Year for All Vaccines</h3>
+      <div id="vaers-deaths-by-year" class="chart-container"></div>
+      <h3 class="inner-sectional">VAERS and COVID-19</h3>
+      <p>
+        The stats below also come from the CDC WONDER system of VAERS data. They only include reports from
+        "The United States/Territories/Unknown" in step 4, and therefore exclude reports from the rest of the world on
+        the COVID-19 vaccines manufactured by US companies.
+      </p>
+      <p>
+        To get the stats below, select "Event Category" in step 1, and "+ COVID19 (COVID19 VACCINE)" in step 3.
+      </p>
+      <div class="stat-cards">
+        <div class="stat-card first-row">
+          <div class="stat-card-title">Death</div>
+          <div class="stat-card-stat">6,981</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-card-title">Permanent Disability</div>
+          <div class="stat-card-stat">8,088</div>
+        </div>
+        <div class="stat-card first-row">
+          <div class="stat-card-title">Hospitalized</div>
+          <div class="stat-card-stat">32,612</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-card-title">Emergency Room or ER Office Visit</div>
+          <div class="stat-card-stat">71,547</div>
+        </div>
+      </div>
     </div>
   </section>
   
