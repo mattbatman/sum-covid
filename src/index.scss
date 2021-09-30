@@ -133,8 +133,14 @@ section {
 }
 
 #vaers-deaths-by-year .x.axis .tick text {
-  transform: rotate(55deg);
+  transform: rotate(66deg);
   text-anchor: start !important;
+}
+
+@media (min-width: 400px) {
+  #vaers-deaths-by-year .x.axis .tick text {
+    transform: rotate(55deg);
+  }
 }
 
 .external-title {
