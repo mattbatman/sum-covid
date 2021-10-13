@@ -37,6 +37,8 @@ function weeklyCharts() {
     })
   };
 
+  console.log(multiLineData)
+
   combinedDeathsChart.update({
     newData: multiLineData,
     yKey: 'Flu Deaths',
