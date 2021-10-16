@@ -23,7 +23,7 @@ function vaersEvent(eventCategory, selector, leftMargin = 45) {
   chart.init({
     sel: selector,
     newMargin: {
-      top: 0,
+      top: 6,
       right: 0,
       bottom: 50,
       left: leftMargin
