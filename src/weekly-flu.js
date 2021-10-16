@@ -37,7 +37,7 @@ function weeklyCharts() {
     })
   };
 
-  console.log(multiLineData)
+  console.log(multiLineData);
 
   combinedDeathsChart.update({
     newData: multiLineData,
