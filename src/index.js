@@ -14,7 +14,7 @@ function main() {
   daily();
   weekly();
   causes();
-  vaersEvent('Death', '#vaers-deaths-by-year', 55)
+  vaersEvent('Death', '#vaers-deaths-by-year', 55);
   vaersEvent('Permanent Disability', '#vaers-disability-by-year', 55);
   vaersEvent('Hospitalized', '#vaers-hospitalizations-by-year', 55);
 }
