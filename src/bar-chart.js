@@ -122,7 +122,8 @@ const BarChart = () => {
     overrideYMax,
     rectColorFunction,
     timeXScale,
-    useTimeTicks
+    useTimeTicks,
+    timeTicksAreYear
   }) {
     data = newData;
     xk = xKey;
@@ -142,25 +143,10 @@ const BarChart = () => {
     yScale.domain([0, yMax]).range([height, 0]);
 
     if (useTimeTicks) {
-      xAxis.tickValues(
-        xScale.domain().filter((d) => {
-          const parsed = parseTime(d);
-          const date = parsed.getDate();
-          const monthMinusOne = parsed.getMonth();
-          if (date === 1) {
-            if (
-              monthMinusOne === 0 ||
-              monthMinusOne === 6 ||
-              monthMinusOne === 3 ||
-              monthMinusOne === 9
-            ) {
-              return true;
-            }
-          }
-
-          return false;
-        })
-      );
+      const filterFunction = timeTicksAreYear
+        ? filterTimeTicksOnlyYear
+        : filterTimeTicksFullDate;
+      xAxis.tickValues(xScale.domain().filter(filterFunction));
     }
 
     xAxis.scale(xScale);
@@ -232,6 +218,32 @@ const BarChart = () => {
           7
         }px`
       );
+  }
+
+  function filterTimeTicksFullDate(d) {
+    const parsed = parseTime(d);
+    const date = parsed.getDate();
+    const monthMinusOne = parsed.getMonth();
+    if (date === 1) {
+      if (
+        monthMinusOne === 0 ||
+        monthMinusOne === 6 ||
+        monthMinusOne === 3 ||
+        monthMinusOne === 9
+      ) {
+        return true;
+      }
+    }
+
+    return false;
+  }
+
+  function filterTimeTicksOnlyYear(d, i) {
+    return isOdd(i);
+  }
+
+  function isOdd(num) {
+    return num % 2;
   }
 
   function resize(event) {

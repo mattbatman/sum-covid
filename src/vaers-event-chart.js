@@ -36,7 +36,8 @@ function vaersEvent(eventCategory, selector, leftMargin = 45) {
     newData: data,
     yKey: eventCategory,
     xKey: 'Year',
-    useTimeTicks: false,
+    useTimeTicks: true,
+    timeTicksAreYear: true,
     rectColorFunction: (d) => '#ffffff'
   });
 }
