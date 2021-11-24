@@ -238,12 +238,8 @@ const BarChart = () => {
     return false;
   }
 
-  function filterTimeTicksOnlyYear(d, i) {
-    return isOdd(i);
-  }
-
-  function isOdd(num) {
-    return num % 2;
+  function filterTimeTicksOnlyYear(d, i, a) {
+    return i % 5 === 0;
   }
 
   function resize(event) {

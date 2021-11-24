@@ -142,17 +142,6 @@ section {
   text-anchor: start !important;
 }
 
-.vaers-chart .x.axis .tick text {
-  transform: rotate(66deg);
-  text-anchor: start !important;
-}
-
-@media (min-width: 400px) {
-  .vaers-chart .x.axis .tick text {
-    transform: rotate(55deg);
-  }
-}
-
 .external-title {
   margin-left: 60px;
   margin-bottom: 1rem;
