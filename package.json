@@ -15,6 +15,7 @@
     "prettier": "2.3.2"
   },
   "dependencies": {
+    "@observablehq/plot": "^0.3.0",
     "d3-array": "^3.0.1",
     "d3-axis": "^3.0.0",
     "d3-format": "^3.0.1",

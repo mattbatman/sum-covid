@@ -159,6 +159,11 @@ section {
   margin-left: 55px;
 }
 
+.external-title.bmi-covid-totals {
+  margin-left: calc(90 / 768 * 100 * 1%);
+  margin-bottom: 0;
+}
+
 /**
  * Generic D3 Styles
  **/
@@ -420,6 +425,12 @@ table tbody tr td {
 .green-on-white {
   color: $dark-green;
   background-color: $off-white;
+
+  blockquote {
+    border-left: 3px solid $dark-green;
+    margin: 1em 0;
+    padding-left: 1em;
+  }
 
   a,
   a:visited {
