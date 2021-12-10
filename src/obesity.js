@@ -10,7 +10,7 @@ function obesity() {
   const data = [
     {
       bmi: 'Underweight',
-      result: 'Cases',
+      result: 'Positive Test',
       cases: 2674
     },
     {
@@ -25,7 +25,7 @@ function obesity() {
     },
     {
       bmi: 'Healthy Weight',
-      result: 'Cases',
+      result: 'Positive Test',
       cases: 28349
     },
     {
@@ -40,7 +40,7 @@ function obesity() {
     },
     {
       bmi: 'Overweight',
-      result: 'Cases',
+      result: 'Positive Test',
       cases: 41973
     },
     {
@@ -55,7 +55,7 @@ function obesity() {
     },
     {
       bmi: 'Obesity',
-      result: 'Cases',
+      result: 'Positive Test',
       cases: 34608 + 20262
     },
     {
@@ -70,7 +70,7 @@ function obesity() {
     },
     {
       bmi: 'Severe Obesity',
-      result: 'Cases',
+      result: 'Positive Test',
       cases: 10739 + 9889
     },
     {
@@ -86,7 +86,7 @@ function obesity() {
   ];
 
   const totalResults = {
-    Cases: 148494,
+    'Positive Test': 148494,
     Hospitalized: 71491,
     Death: 8348
   };
@@ -212,7 +212,7 @@ function generateWeightPercentChart({ data, container }) {
     y: {
       label: null,
       tickRotate: -23,
-      domain: ['Total Cohort in Database', 'Cases', 'Hospitalized', 'Death']
+      domain: ['Total Cohort in Database', 'Positive Test', 'Hospitalized', 'Death']
     },
     fy: {
       domain: data.map(({ bmi }) => bmi),
