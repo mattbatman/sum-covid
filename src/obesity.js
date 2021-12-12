@@ -139,7 +139,7 @@ const getDataAsPercents = (data, totalResults, totalsByClass) => {
   const classes = keys(totalsByClass);
 
   forEach((k) => {
-    classTotal = totalsByClass[k];
+    let classTotal = totalsByClass[k];
     totalsByClass[k] = classTotal / totalDatabase;
   }, classes);
 
