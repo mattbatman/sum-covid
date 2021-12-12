@@ -1,10 +1,15 @@
 import * as Plot from '@observablehq/plot';
 import { concat, map, keys, forEach } from 'ramda';
 
+// harvard study 1 and 10%
+
 function obesity() {
   const mainChartContainer = document.querySelector('#weight-chart');
   const percentChartContainer = document.querySelector(
     '#weight-percentage-chart'
+  );
+  const stackedPercentChartContainer = document.querySelector(
+    '#stacked-weight-percentage-chart'
   );
 
   const data = [
@@ -111,6 +116,13 @@ function obesity() {
       container: percentChartContainer
     });
   }
+
+  if (stackedPercentChartContainer && dataAsPercents) {
+    generateStackedWeightPercentageChart({
+      data: dataAsPercents,
+      container: stackedPercentChartContainer
+    });
+  }
 }
 
 const getDataAsPercents = (data, totalResults, totalsByClass) => {
@@ -183,7 +195,7 @@ function generateWeightChart({ data, container }) {
           }
         )
       ),
-      Plot.ruleX[0]
+      Plot.ruleX([0])
     ]
   };
 
@@ -212,7 +224,12 @@ function generateWeightPercentChart({ data, container }) {
     y: {
       label: null,
       tickRotate: -23,
-      domain: ['Total Cohort in Database', 'Positive Test', 'Hospitalized', 'Death']
+      domain: [
+        'Total Cohort in Database',
+        'Positive Test',
+        'Hospitalized',
+        'Death'
+      ]
     },
     fy: {
       domain: data.map(({ bmi }) => bmi),
@@ -238,8 +255,53 @@ function generateWeightPercentChart({ data, container }) {
           }
         )
       ),
-      Plot.ruleX[0]
+      Plot.ruleX([0])
     ]
+  };
+
+  const chart = Plot.plot(plotOptions);
+
+  if (chart) {
+    container.appendChild(chart);
+  }
+}
+
+function generateStackedWeightPercentageChart({ data, container }) {
+  const plotOptions = {
+    style: {
+      backgroundColor: '#f8eedc',
+      fontFamily: 'Inter, sans-serif'
+    },
+    width: 768,
+    height: 450,
+    marginLeft: 150,
+    y: {
+      label: 'Outcome',
+      reverse: true
+    },
+    x: {
+      label: null,
+      grid: true,
+      tickFormat: '%'
+    },
+    marks: [
+      Plot.barX(data, {
+        x: 'cases',
+        y: 'result',
+        fill: 'bmi'
+      }),
+      Plot.ruleX([0, 1])
+    ],
+    color: {
+      legend: true,
+      range: [ 
+        '#1b5037',
+        '#e78d38',
+        '#fdba3a', 
+        '#e74e38',
+        '#a9c774',
+      ]
+    }
   };
 
   const chart = Plot.plot(plotOptions);
