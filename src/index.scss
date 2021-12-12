@@ -26,6 +26,13 @@ $red-brown: #7c3c3c;
   font-family: 'Inter', sans-serif;
 }
 
+html,
+body,
+section {
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
 .container {
   width: 96%;
   max-width: 768px;
@@ -172,6 +179,57 @@ section {
 .external-title.bmi-percent {
   margin-left: calc(150 / 768 * 100 * 1%);
   margin-bottom: 0;
+}
+
+#stacked-weight-percentage-chart-legend {
+  font-size: 10px;
+
+  .legend-item {
+    display: inline-flex;
+    align-items: center;
+    margin-right: 1em;
+  }
+
+  .underweight::before {
+    content: '';
+    background-color: $light-green;
+    width: 15px;
+    height: 15px;
+    display: inline-block;
+    margin-right: 0.5em;
+  }
+  .healthy-weight::before {
+    content: '';
+    background-color: $dark-green;
+    width: 15px;
+    height: 15px;
+    display: inline-block;
+    margin-right: 0.5em;
+  }
+  .overweight::before {
+    content: '';
+    background-color: $yellow;
+    width: 15px;
+    height: 15px;
+    display: inline-block;
+    margin-right: 0.5em;
+  }
+  .obesity::before {
+    content: '';
+    background-color: $orange;
+    width: 15px;
+    height: 15px;
+    display: inline-block;
+    margin-right: 0.5em;
+  }
+  .severe-obesity::before {
+    content: '';
+    background-color: $red;
+    width: 15px;
+    height: 15px;
+    display: inline-block;
+    margin-right: 0.5em;
+  }
 }
 
 /**

@@ -293,14 +293,7 @@ function generateStackedWeightPercentageChart({ data, container }) {
       Plot.ruleX([0, 1])
     ],
     color: {
-      legend: true,
-      range: [ 
-        '#1b5037',
-        '#e78d38',
-        '#fdba3a', 
-        '#e74e38',
-        '#a9c774',
-      ]
+      range: ['#1b5037', '#e78d38', '#fdba3a', '#e74e38', '#a9c774']
     }
   };
 
