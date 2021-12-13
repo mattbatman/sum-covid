@@ -30,7 +30,16 @@ html,
 body,
 section {
   max-width: 100vw;
+}
+
+html,
+body {
   overflow-x: hidden;
+}
+
+section,
+svg {
+  overflow: visible;
 }
 
 .container {
