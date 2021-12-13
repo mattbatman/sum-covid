@@ -4,6 +4,7 @@ import { concat, map, keys, forEach } from 'ramda';
 // harvard study 1 and 10%
 
 function obesity() {
+  const totalDatabase = 3242649;
   const mainChartContainer = document.querySelector('#weight-chart');
   const percentChartContainer = document.querySelector(
     '#weight-percentage-chart'
@@ -93,7 +94,8 @@ function obesity() {
   const totalResults = {
     'Positive Test': 148494,
     Hospitalized: 71491,
-    Death: 8348
+    Death: 8348,
+    'Total Cohort in Database': totalDatabase
   };
 
   const totalsByClass = {
@@ -104,7 +106,9 @@ function obesity() {
     'Severe Obesity': 187046 + 162208
   };
 
-  const dataAsPercents = getDataAsPercents(data, totalResults, totalsByClass);
+  const dataWithTotalsByClass = getWithTotalCohort(data, totalsByClass);
+
+  const dataAsPercents = getDataAsPercents(dataWithTotalsByClass, totalResults);
 
   if (mainChartContainer) {
     generateWeightChart({ data, container: mainChartContainer });
@@ -125,34 +129,29 @@ function obesity() {
   }
 }
 
-const getDataAsPercents = (data, totalResults, totalsByClass) => {
-  const totalDatabase = 3242649;
+const getWithTotalCohort = (data, totalsByClass) => {
+  const bmiClassifications = keys(totalsByClass);
 
-  const casesAsPercents = map(
+  const withTotalCohort = map(
+    (d) => ({
+      bmi: d,
+      result: 'Total Cohort in Database',
+      cases: totalsByClass[d]
+    }),
+    bmiClassifications
+  );
+
+  return concat(data, withTotalCohort);
+};
+
+const getDataAsPercents = (data, totalResults) => {
+  return map(
     (d) => ({
       ...d,
       cases: d.cases / totalResults[d.result]
     }),
     data
   );
-
-  const classes = keys(totalsByClass);
-
-  forEach((k) => {
-    let classTotal = totalsByClass[k];
-    totalsByClass[k] = classTotal / totalDatabase;
-  }, classes);
-
-  const percentsSegment = map(
-    (k) => ({
-      bmi: k,
-      result: 'Total Cohort in Database',
-      cases: totalsByClass[k]
-    }),
-    classes
-  );
-
-  return concat(percentsSegment, casesAsPercents);
 };
 
 function generateWeightChart({ data, container }) {
