@@ -68,7 +68,7 @@
       <p>
         This data is from the CDC's
         <a href="https://dev.socrata.com/foundry/data.cdc.gov/vbim-akqf">COVID-19 Case Surveillance Public Use Data API</a>,
-        last updated on November 16, 2021, and has data from 37,532,072 cases. The case fatality rate ("CFR") was calculated as
+        last updated on December 18, 2021, and has data from 40,314,956 cases. The case fatality rate ("CFR") was calculated as
         the deaths in the age group divided by the number of cases in that age group. The survival rate is the number of
         cases that did not result in a death, or "1 minus the death rate."
       </p>
@@ -81,13 +81,14 @@
       <h2>Deaths and Other Medical Conditions</h2>
       <p>
         The CDC's <a href="https://dev.socrata.com/foundry/data.cdc.gov/vbim-akqf">COVID-19 Case Surveillance
-          Public Use Data API</a> (last updated on November 16, 2021 reflecting 37,532,072 cases with 631,376 deaths) presents the presence of underlying comorbidity
+          Public Use Data API</a> (last updated on December 18, 2021 reflecting 40,314,956 cases with 674,971 deaths) presents the presence of underlying comorbidity
           or disease as a field with the possible values of: yes, no, unknown,
-          or missing. 505,914 (~80%) of the case data with a death has this field marked as "Missing" or "Unknown."
+          or missing. 553,803 (~82%) of the case data with a death has this field marked as "Missing" or "Unknown."
       </p>
       <div id="deaths-medcond-chart" className="chart-container"></div>
       <p>
-        There are 125,462 deaths in the data with a value of "Yes" (the death had an underlying comorbidity) or "No" (the death had no comorbidity in addition to COVID-19). Of these, 116,160 (~93%) had an underlying comorbidity or disease. 9,302 (~7%) did not.
+        There are 121,168 deaths in the data with either a value of "Yes" (the death had an underlying comorbidity) or
+        "No" (the death had no comorbidity in addition to COVID-19). Of these, 111,413 (~92%) had an underlying comorbidity or disease. 9,755 (~8%) did not.
       </p>
       <div id="deaths-medcond-share-chart" className="chart-container"></div>
     </div>
