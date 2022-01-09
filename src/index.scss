@@ -145,6 +145,7 @@ section {
 #daily-cases-chart,
 #weekly-flu-deaths-chart,
 #weekly-combined-deaths-chart,
+#weekly-moving-average-cfr,
 .vaers-chart {
   height: 400px;
 }
@@ -161,6 +162,10 @@ section {
 .external-title {
   margin-left: 60px;
   margin-bottom: 1rem;
+}
+
+.external-explanatory {
+  margin-left: 60px;
 }
 
 .select-causes-death-title.external-title {

@@ -28,6 +28,7 @@ const BarChart = () => {
   let tooltip;
   let tipBody;
   const parseTime = d3.timeParse('%b %e %Y');
+  let yFormatter;
 
   function init({ sel, xTitle, chartTitle, subtitle, newMargin }) {
     selector = sel;
@@ -123,16 +124,20 @@ const BarChart = () => {
     rectColorFunction,
     timeXScale,
     useTimeTicks,
-    timeTicksAreYear
+    timeTicksAreYear,
+    yAxisFormatSpecifier
   }) {
     data = newData;
     xk = xKey;
     yk = yKey;
+    yFormatter = yAxisFormatSpecifier ? d3.format(yAxisFormatSpecifier): y => y;
 
     xScale = timeXScale ? timeXScale : d3.scaleBand().padding(0.05);
     xAxis = d3.axisBottom(xScale);
     yScale = d3.scaleLinear();
-    yAxis = d3.axisLeft(yScale);
+    yAxis = yAxisFormatSpecifier
+      ? d3.axisLeft(yScale).tickFormat(yFormatter)
+      : d3.axisLeft(yScale);
 
     xScale.domain(data.map((d) => d[xk])).range([0, width]);
 
@@ -175,7 +180,7 @@ const BarChart = () => {
 
   function updateTooltip(event, d) {
     d3.select(`${selector} .d3-tooltip .stat`).text(
-      `${d[xk]}: ${d[yk].toLocaleString()}`
+      `${d[xk]}: ${yFormatter(d[yk]).toLocaleString()}`
     );
     d3.select(`${selector} .d3-tooltip`)
       .classed('hidden', false)
