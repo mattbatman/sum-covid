@@ -130,7 +130,9 @@ const BarChart = () => {
     data = newData;
     xk = xKey;
     yk = yKey;
-    yFormatter = yAxisFormatSpecifier ? d3.format(yAxisFormatSpecifier): y => y;
+    yFormatter = yAxisFormatSpecifier
+      ? d3.format(yAxisFormatSpecifier)
+      : (y) => y;
 
     xScale = timeXScale ? timeXScale : d3.scaleBand().padding(0.05);
     xAxis = d3.axisBottom(xScale);
