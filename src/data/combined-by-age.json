@@ -1,13 +1,1 @@
-[
-  { "deaths": "1", "cases": "83", "age_group": "NA" },
-  { "deaths": "82", "cases": "386408", "age_group": "Missing" },
-  { "deaths": "286863", "cases": "1411488", "age_group": "80+ Years" },
-  { "deaths": "174232", "cases": "2174759", "age_group": "70 - 79 Years" },
-  { "deaths": "125651", "cases": "4026054", "age_group": "60 - 69 Years" },
-  { "deaths": "64826", "cases": "5678394", "age_group": "50 - 59 Years" },
-  { "deaths": "27437", "cases": "6072616", "age_group": "40 - 49 Years" },
-  { "deaths": "12071", "cases": "7015070", "age_group": "30 - 39 Years" },
-  { "deaths": "4738", "cases": "7620677", "age_group": "20 - 29 Years" },
-  { "deaths": "972", "cases": "5303997", "age_group": "10 - 19 Years" },
-  { "deaths": "486", "cases": "2799602", "age_group": "0 - 9 Years" }
-]
+[{"deaths":0,"cases":"82","age_group":"NA"},{"deaths":"86","cases":"399695","age_group":"Missing"},{"deaths":"292042","cases":"1438832","age_group":"80+ Years"},{"deaths":"177971","cases":"2229017","age_group":"70 - 79 Years"},{"deaths":"128696","cases":"4140542","age_group":"60 - 69 Years"},{"deaths":"66483","cases":"5861767","age_group":"50 - 59 Years"},{"deaths":"28185","cases":"6297134","age_group":"40 - 49 Years"},{"deaths":"12436","cases":"7320239","age_group":"30 - 39 Years"},{"deaths":"4903","cases":"7964992","age_group":"20 - 29 Years"},{"deaths":"1016","cases":"5505840","age_group":"10 - 19 Years"},{"deaths":"498","cases":"2925223","age_group":"0 - 9 Years"}]
