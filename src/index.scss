@@ -494,6 +494,36 @@ table tbody tr td {
   }
 }
 
+.white-on-red {
+  color: $off-white;
+  background-color: $red;
+
+  a,
+  a:visited {
+    color: $off-white;
+  }
+
+  table tr {
+    border-bottom: 1px solid $off-white;
+  }
+
+  table th {
+    font-weight: bold;
+  }
+
+  table thead tr {
+    border-bottom: 2px solid $off-white;
+  }
+
+  table thead tr:first-child {
+    border-bottom: none;
+  }
+
+  table tbody tr:not(:first-child) td {
+    padding-left: 1rem;
+  }
+}
+
 .blue-on-grey {
   color: $blue;
   background-color: $grey-blue;
