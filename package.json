@@ -10,8 +10,8 @@
   "author": "Matt Batman",
   "license": "MIT",
   "devDependencies": {
-    "@parcel/transformer-sass": "^2.0.0-rc.0",
-    "parcel": "^2.0.0-rc.0",
+    "@parcel/transformer-sass": "^2.12.0",
+    "parcel": "^2.12.0",
     "prettier": "2.3.2"
   },
   "dependencies": {
