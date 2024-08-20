@@ -1,26 +1,23 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sum COVID</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-KGK54GFW04"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() { dataLayer.push(arguments); }
+      gtag('js', new Date());
 
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>Sum COVID</title>
-  <link rel="stylesheet" href="./index.scss" />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
-  <!-- Global site tag (gtag.js) - Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-KGK54GFW04"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag() { dataLayer.push(arguments); }
-    gtag('js', new Date());
-
-    gtag('config', 'G-KGK54GFW04');
-  </script>
-</head>
-
-<body>
+      gtag('config', 'G-KGK54GFW04');
+    </script>
+  </head>
+  <body>
   <div class="hero">
     <div>
       <h1>Sum COVID</h1>
@@ -28,16 +25,18 @@
       <p class="down-arrow">&#8595;</p>
     </div>
   </div>
-    
+  
   <section class="white-on-black">
     <div class="container">
       <h2>Total Cases, Deaths, and Case Fatality Rate</h2>
       <p>
-        This data is from the CDC's <a href="https://covid.cdc.gov/covid-data-tracker/#datatracker-home">COVID Tracker Data</a>
+        This data is from the CDC's <a href="https://covid.cdc.gov/covid-data-tracker/#datatracker-home">COVID Tracker
+          Data</a>
         as of November 14, 2022. These totals are since January 21, 2020.
       </p>
       <p>
-        Note that the case fatality rate ("CFR") reflects deaths as a percentage of cases. It does not attempt to factor for every person who has had COVID-19, such as the untested and undiagnosed.
+        Note that the case fatality rate ("CFR") reflects deaths as a percentage of cases. It does not attempt to factor
+        for every person who has had COVID-19, such as the untested and undiagnosed.
       </p>
       <div class="stat-cards">
         <div class="stat-card first-row">
@@ -57,47 +56,52 @@
           <div class="stat-card-stat">98.91%</div>
         </div>
       </div>
-   </div>
+    </div>
   </section>
-
+  
   <section class="red-on-white">
     <div class="container">
       <h2>Case Fatality and Survival Rates by Age Group</h2>
       <p>
         This data is from the CDC's
-        <a href="https://dev.socrata.com/foundry/data.cdc.gov/vbim-akqf">COVID-19 Case Surveillance Public Use Data API</a>,
-        last updated on October 6, 2022, and has data from 82,422,585 cases. The case fatality rate ("CFR") was calculated as
+        <a href="https://dev.socrata.com/foundry/data.cdc.gov/vbim-akqf">COVID-19 Case Surveillance Public Use Data
+          API</a>,
+        last updated on October 6, 2022, and has data from 82,422,585 cases. The case fatality rate ("CFR") was calculated
+        as
         the deaths in the age group divided by the number of cases in that age group. The survival rate is the number of
         cases that did not result in a death, or "1 minus the death rate."
       </p>
       <div class="death-rates-by-age-table-container"></div>
     </div>
   </section>
-
+  
   <section>
     <div class="container">
       <h2>Deaths and Other Medical Conditions</h2>
       <p>
         The CDC's <a href="https://dev.socrata.com/foundry/data.cdc.gov/vbim-akqf">COVID-19 Case Surveillance
-          Public Use Data API</a> (last updated on October 6, 2022 reflecting 87,306,976 cases with 898,950 deaths) presents the presence of underlying comorbidity
-          or disease as a field with the possible values of: yes, no, unknown,
-          or missing. 752,121 (~84%) of the case data with a death has this field marked as "Missing" or "Unknown."
+          Public Use Data API</a> (last updated on October 6, 2022 reflecting 87,306,976 cases with 898,950 deaths)
+        presents the presence of underlying comorbidity
+        or disease as a field with the possible values of: yes, no, unknown,
+        or missing. 752,121 (~84%) of the case data with a death has this field marked as "Missing" or "Unknown."
       </p>
       <div id="deaths-medcond-chart" className="chart-container"></div>
       <p>
         There are 146,829 deaths in the data with either a value of "Yes" (the death had an underlying comorbidity) or
-        "No" (the death had no comorbidity). Of these, 125,487 (~85%) had an underlying comorbidity or disease. 21,342 (~15%) did not.
+        "No" (the death had no comorbidity). Of these, 125,487 (~85%) had an underlying comorbidity or disease. 21,342
+        (~15%) did not.
       </p>
       <div id="deaths-medcond-share-chart" className="chart-container"></div>
     </div>
   </section>
-
+  
   <section class="white-on-black">
     <div class="container">
       <h2>Daily Deaths and Cases Over Time</h2>
       <p>
         This data was downloaded directly from the
-        <a href="https://covid.cdc.gov/covid-data-tracker/#trends_dailycases">CDC's COVID Tracker Daily and Total Trends</a>
+        <a href="https://covid.cdc.gov/covid-data-tracker/#trends_dailycases">CDC's COVID Tracker Daily and Total
+          Trends</a>
         on October 16, 2022. The last date with data from the CDC is September 29, 2022.
       </p>
       <h3 class="external-title">Deaths per Day</h3>
@@ -115,7 +119,7 @@
       <div id="weekly-moving-average-cfr"></div>
     </div>
   </section>
-
+  
   <section class="green-on-white">
     <div class="container">
       <h2>COVID and Flu Deaths</h2>
@@ -124,7 +128,7 @@
         <a href="https://www.cdc.gov/flu/weekly/index.htm">Pneumonia, Influenza,
           and COVID-19 Mortality from the National Center for Health Statistics
           Mortality Surveillance System</a>. The data was last updated with
-          totals through the week ending July 2, 2022.
+        totals through the week ending July 2, 2022.
       </p>
       <h3 class="external-title">Weekly Flu Deaths</h3>
       <div id="weekly-flu-deaths-chart" class="chart-container"></div>
@@ -133,7 +137,7 @@
       <div id="weekly-combined-deaths-legend" class="legend-container"></div>
     </div>
   </section>
-
+  
   <section>
     <div class="container">
       <h2>Death by Select Causes, Compared</h2>
@@ -148,7 +152,7 @@
       <div id="select-causes-death" class="chart-container"></div>
     </div>
   </section>
-
+  
   <section class="white-on-red">
     <div class="container">
       <h2>All Cause Mortality in Pfizer Six Month Safety and Efficacy Study</h2>
@@ -186,7 +190,7 @@
             <td>Deaths</td>
             <td>21</td>
             <td>17</td>
-          </tr> 
+          </tr>
           <tr>
             <td>Acute respiratory failure</td>
             <td>0</td>
@@ -326,7 +330,7 @@
       </table>
     </div>
   </section>
-
+  
   <section class="white-on-black">
     <div class="container">
       <h2>Vaccine Adverse Event Reporting System (VAERS)</h2>
@@ -436,8 +440,7 @@
       <p>Made by <a href="https://mattbatman.com">Matt Batman</a></p>
     </div>
   </section>
-  
-  <script type="module" src="./index.js"></script>
-</body>
 
+    <script type="module" src="/src/index.js"></script>
+  </body>
 </html>

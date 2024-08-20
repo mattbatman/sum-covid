@@ -8,6 +8,8 @@ import vaersEvent from './vaers-event-chart';
 import obesity from './obesity';
 import countData from './data/combined-by-age.json';
 
+import './index.scss';
+
 function main() {
   smoothScrollArrow();
   createRatesByAgeTable(countData);
