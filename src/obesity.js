@@ -189,7 +189,7 @@ function generateWeightChart({ data, container }) {
             x: 'cases',
             y: 'result',
             title: (group) =>
-              `BMI Classification: ${group[0].bmi}\n${group[0].result}: ${group[0].cases}`,
+              `BMI Classification: ${group.bmi}\n${group.result}: ${group.cases}`,
             sort: { y: 'x', reverse: true }
           }
         )
@@ -248,9 +248,9 @@ function generateWeightPercentChart({ data, container }) {
             x: 'cases',
             y: 'result',
             title: (group) =>
-              `BMI Classification: ${group[0].bmi}\n${
-                group[0].result
-              }: ${Math.round(group[0].cases * 100)}%`
+              `BMI Classification: ${group.bmi}\n${
+                group.result
+              }: ${Math.round(group.cases * 100)}%`
           }
         )
       ),
